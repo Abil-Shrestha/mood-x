@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const getPlaylists = async () => {
+export const GET = async () => {
 
   const API_URL =
   process.env.NODE_ENV === "production"

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 
-export const getArtists = async () => {
+export const GET = async () => {
   const API_URL =
     process.env.NODE_ENV === "production"
       ? "https://mood-x-production.up.railway.app/"
