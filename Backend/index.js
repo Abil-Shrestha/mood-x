@@ -14,6 +14,7 @@ import playlistsRoute from './routes/playlists.js';
 
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 app.use(express.json())
 app.use(cors());
 
@@ -29,6 +30,6 @@ app.get('/', (req, res) => {
   res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">✈️ Wooohooo</h1>')
 })
 app.use('/artists', artistRoute)
-app.listen(5000, () =>{
-    console.log(" 🚀 Server has started on port 5000")
+app.listen(PORT, () => {
+  console.log(`Server listening on http://localhost:${PORT}`);
 });
