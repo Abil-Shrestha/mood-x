@@ -138,7 +138,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                     {song && song[0] && song[0].image_url ? (
                         <img src={song[0].image_url} width={60} height={60} alt="Song Cover" />
                     ) : (
-                        <></>
+                        <><img src='/images/image_placeholder.jpg' width={60} height={60} alt="Default Song Cover" /></>
                     )}
                     <div className="flex flex-col">
                         {console.log(song)}
