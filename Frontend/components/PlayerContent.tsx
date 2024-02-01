@@ -141,6 +141,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                         <></>
                     )}
                     <div className="flex flex-col">
+                        {console.log(song)}
                     {song && song[0] && song[0].title ? <p>{song[0].title}</p> : <p>No title available</p>}
                     
                     <p className="
@@ -151,7 +152,6 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                     ">By {artist}</p>
                     </div>
                 </div>
-                    <LikeButton songId={song.song_id} />
                     <ReactHowler
                         playing={isPlaying}
                         src={songUrl}

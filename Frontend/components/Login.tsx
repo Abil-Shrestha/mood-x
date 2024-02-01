@@ -83,8 +83,6 @@ const Login: React.FC<SignUpProps> = ({ darkMode }) => {
         console.log('After API call');
       }
 
-    
-      
       
     return (
     <>

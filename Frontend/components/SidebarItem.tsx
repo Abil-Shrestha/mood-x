@@ -25,10 +25,13 @@ const SidebarItem:React.FC<SidebarItemProps> = ({icon: Icon,label,active,href}) 
             hover:text-white
             transition
             text-neutral-400
-            py-1
+            pr-2
+            
+            rounded-lg
+            
         `, active && 'text-slate-100')}>
-                <Icon  size={26} />
-                <p className="truncate w-full">{label}</p>
+                <Icon  className="hover:scale-105 ease-in-out transition" size={26} />
+                <p className="truncate w-full hover:bg-neutral-800 rounded-lg p-2">{label}</p>
     </Link>
   )
 }

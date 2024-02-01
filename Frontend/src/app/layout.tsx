@@ -8,7 +8,7 @@ import { Inter } from 'next/font/google'
 const font = Figtree({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Moody',
+  title: 'Mood_x',
   description: 'Social Music Player',
 }
 

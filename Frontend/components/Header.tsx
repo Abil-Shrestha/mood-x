@@ -32,7 +32,7 @@ const Header:React.FC<HeaderProps> = ({children, className}) => {
         twMerge(`
         h-fit
         bg-gradient-to-b
-        from-purple-400/50
+        from-purple-400/20
         p-6`,className)
     }>
         <div className="
@@ -79,7 +79,7 @@ const Header:React.FC<HeaderProps> = ({children, className}) => {
                     <BiSearch className="text-black" size={20}/>
                 </button>
             </div>
-            <div 
+            {/* <div 
                 className="
                 flex
                 justify-between
@@ -119,11 +119,11 @@ const Header:React.FC<HeaderProps> = ({children, className}) => {
                             </Button>
                         </div>
                     </>
-            </div>
+            </div> */}
         </div>
         {children}
-        {showLogin && <Login darkMode={false} /> }
-        {showSignUp && <SignUp darkMode={false}/>}
+        {/* {showLogin && <Login darkMode={false} /> }
+        {showSignUp && <SignUp darkMode={false}/>} */}
     </div>
   )
 }

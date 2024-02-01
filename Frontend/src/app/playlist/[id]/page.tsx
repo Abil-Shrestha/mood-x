@@ -2,12 +2,12 @@
 import React, {useState, useEffect} from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/Avatar"
 import Header from "@/components/Header";
-import PageContent from '@/components/PageContent';
 import { Playlists, Song } from "@/types";
 import { useParams } from 'next/navigation'
 import useGetSongById  from '@/hooks/useGetSongById';
 import SongItem from '@/components/SongItem';
 import useOnPlay from "@/hooks/useOnPlay";
+import { API_URL } from "@/Api/UsersApi";
 
 const PlaylistPage = () => {
 const [playlist, setPlaylist] = useState<Playlists | null>(null);
@@ -18,7 +18,7 @@ const {id} = useParams()
 
     useEffect(() => {
         const fetchPlaylists = async () => {
-            const playlistData = await fetch('http://localhost:5000/playlists');
+            const playlistData = await fetch(`${API_URL}/playlists`);
             const data = await playlistData.json();
             const foundPlaylist = data.find(playlist => Number(playlist.id) === Number(id));
             setPlaylist(foundPlaylist);
@@ -32,7 +32,7 @@ const {id} = useParams()
           }
 
         const fetchSongs = async () => {
-            const songData = await fetch('http://localhost:5000/songs');
+            const songData = await fetch(`${API_URL}/songs`);
             const datax = await songData.json();
             const filtered = filterSongs(datax,songIds);
             console.log(filtered)
