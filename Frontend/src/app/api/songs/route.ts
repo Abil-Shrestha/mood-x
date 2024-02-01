@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server"
+import { NextResponse ,NextRequest} from "next/server"
 
-export const GET = async () => {
+export const GET = async (req: NextRequest, res: NextResponse) => {
   const API_URL =
     process.env.NODE_ENV === "production"
       ? "https://mood-x-production.up.railway.app/"

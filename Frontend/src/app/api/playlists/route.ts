@@ -1,17 +1,20 @@
-import { NextResponse } from "next/server";
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export const GET = async () => {
-
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const API_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://mood-x-production.up.railway.app/"
-    : "http://localhost:5000/"
+    process.env.NODE_ENV === "production"
+      ? "https://mood-x-production.up.railway.app/"
+      : "http://localhost:5000/"
 
-    try {
-      const response = await fetch(`${API_URL}/playlists`);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
+      try {
+        const response = await fetch(`${API_URL}/playlists`);
+        const data = await response.json();
+        return res.status(200).json(data);
+      } catch (error) {
+        console.error('Error:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+      }
+}

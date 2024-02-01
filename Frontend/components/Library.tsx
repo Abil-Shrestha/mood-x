@@ -3,17 +3,18 @@ import {useState, useEffect } from 'react'
 import { TbPlaylist } from 'react-icons/tb'
 import { AiOutlinePlus } from 'react-icons/ai'
 import MediaItem from './MediaItem'
-import { getPlaylists } from '@/src/app/api/playlists/route'
 import { Playlists } from "@/types";
 import Link from 'next/link'
+import { API_URL } from '@/Api/UsersApi';
 
 const Library = () => {
   const [playlists, setPlaylists] = useState<Playlists[]>([]);
 
   useEffect(() => {
     const fetchPlaylists = async () => {
-      const playlistData = await getPlaylists();
-      setPlaylists(playlistData);
+      const response = await fetch(`${API_URL}/playlists`);
+      const data = await response.json();
+      setPlaylists(data);
     };
 
     fetchPlaylists();

@@ -3,20 +3,19 @@ import {useEffect, useState} from 'react';
 import { Song } from "@/types";
 import useOnPlay from "@/hooks/useOnPlay";
 import SongItem from "@/components/SongItem";
-import { getSongs } from '../../api/songs/route'
-
+import { API_URL } from '@/Api/UsersApi';
 
 const PageContent = () => {
   const [songs, setSongs] = useState<Song[]>([]);
 
   useEffect(() => {
-    const fetchSongs = async () => {
-      const songData = await getSongs();
-      console.log(songData)
-      setSongs(songData);
+    const fetchSong = async () => {
+      const response = await fetch(`${API_URL}/songs`);
+      const data = await response.json();
+      setSongs(data);
     };
 
-    fetchSongs();
+    fetchSong();
   }, []);
   const onPlay = useOnPlay(songs);
   if (songs.length === 0) {

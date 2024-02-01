@@ -1,12 +1,18 @@
 import { Song } from "@/types";
-import { getSongs } from "@/src/app/api/songs/route"
+import { API_URL } from "@/Api/UsersApi";
 
 const useLoadSongUrl = async (id?: string) => {
-
+  
+  
+  const fetchSong = async () => {
+    const response = await fetch(`${API_URL}/songs`);
+    const data = await response.json();
+    return data;
+  };
   if (!id) {
     return '';
   }
-  const songData = await getSongs();
+  const songData = await fetchSong();
   const data = songData.filter((song) => id === song.song_id)
   return data[0].song_url
 };
