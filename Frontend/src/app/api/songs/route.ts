@@ -1,11 +1,15 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from "next/server"
 
 export const getSongs = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/songs');
-      const datax = await response.json();
-      return datax;
-    } catch (error) {
-      console.error('Error:', error);
-    }
+  const API_URL =
+    process.env.NODE_ENV === "production"
+      ? "https://mood-x-production.up.railway.app/"
+      : "http://localhost:5000/"
+  try {
+    const response = await fetch(`${API_URL}/songs`)
+    const datax = await response.json()
+    return datax
+  } catch (error) {
+    console.error("Error:", error)
   }
+}

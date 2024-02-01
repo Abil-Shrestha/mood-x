@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const API_URL =
   process.env.NODE_ENV === "production"
-    ? "http://somprourl.com/api"
+    ? "https://mood-x-production.up.railway.app/"
     : "http://localhost:5000/";
 
 const createInstance = (baseURL) => {

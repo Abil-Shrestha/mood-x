@@ -1,8 +1,14 @@
 import { NextResponse } from "next/server";
 
 export const getPlaylists = async () => {
+
+  const API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://mood-x-production.up.railway.app/"
+    : "http://localhost:5000/"
+
     try {
-      const response = await fetch('http://localhost:5000/playlists');
+      const response = await fetch(`${API_URL}/playlists`);
       const data = await response.json();
       return data;
     } catch (error) {
