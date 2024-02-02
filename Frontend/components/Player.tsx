@@ -1,22 +1,37 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import usePlayer from "@/hooks/usePlayer";
-import useGetSongById from '@/hooks/useGetSongById';
 import useLoadSongUrl from "@/hooks/useLoadSongUrl";
 import PlayerContent from '@/components/PlayerContent'
 import useLoadArtistById from "@/hooks/useLoadArtistById";
 
+import { Song } from "@/types"
+import { API_URL } from "@/Api/UsersApi"
+
 const Player = () => {
     const player = usePlayer();
-    const { song } = useGetSongById(player.activeId);
+
     const artist = useLoadArtistById(player.activeId);
     const [songUrl, setSongUrl] = useState(null);
+    const [song, setSong] = useState<Song | any>({})
+    const [isLoading, setIsLoading] = useState(false)
+
     useEffect(() => {
+        const songById = async (id?: string) => {
+            setIsLoading(true);
+            const response = await fetch(`${API_URL}/songs`);
+            const data: Song[] = await response.json();
+            const song = data.find((song) => id === song.song_id);
+            setSong(song);
+            console.log('setting song', song)
+            setIsLoading(false);
+        };
+
         const loadSongUrl = async () => {
             const url = await useLoadSongUrl(player.activeId);
             setSongUrl(url);
         };
-
+        songById(player.activeId);
         loadSongUrl();
     }, [player.activeId]);
 
@@ -39,7 +54,7 @@ const Player = () => {
                 song={song}
                 key={songUrl || ''}
                 songUrl={songUrl || ''}
-                artist = {artist || ''} />
+                artist={artist || ''} />
         </div>
     );
 }

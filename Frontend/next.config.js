@@ -4,7 +4,8 @@ const nextConfig = {
     images:{
         domains:[
             "ncsmusic.s3.eu-west-1.amazonaws.com","i1.sndcdn.com"
-        ]
+        ],
+        unoptimized: true,
     }
 }
 

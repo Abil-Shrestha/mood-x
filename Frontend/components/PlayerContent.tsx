@@ -33,7 +33,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
     const [seek, setSeek] = useState(0.0)
     const [isSeeking, setIsSeeking] = useState(false)
     const soundRef = useRef(null)
-
+    console.log(song.title)
     const Icon = isPlaying ? BsPauseFill : BsPlayFill;
     const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave;
 
@@ -135,14 +135,13 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
             <div className="flex min-w-[100px] justify-start">
                 <div className="flex items-center gap-x-20">
                 <div className="flex items-center gap-x-3">
-                    {song && song[0] && song[0].image_url ? (
-                        <img src={song[0].image_url} width={60} height={60} alt="Song Cover" />
+                    {song && song.image_url ? (
+                        <img src={song.image_url} width={60} height={60} alt="Song Cover" />
                     ) : (
                         <><img src='/images/image_placeholder.jpg' width={60} height={60} alt="Default Song Cover" /></>
                     )}
                     <div className="flex flex-col">
-                        {console.log(song)}
-                    {song && song[0] && song[0].title ? <p>{song[0].title}</p> : <p>No title available</p>}
+                    {song && song.title ? <p>{song.title}</p> : <p>No title available</p>}
                     
                     <p className="
                         text-neutral-400 

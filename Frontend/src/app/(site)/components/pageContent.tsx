@@ -16,7 +16,7 @@ const PageContent = () => {
     };
 
     fetchSong();
-  }, []);
+  }, [songs]);
   const onPlay = useOnPlay(songs);
   if (songs.length === 0) {
     return (

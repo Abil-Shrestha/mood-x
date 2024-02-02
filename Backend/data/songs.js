@@ -57,7 +57,7 @@ export const songData = [
     song_url:
       "https://ncsmusic.s3.eu-west-1.amazonaws.com/tracks/000/001/504/8-rounds-1692316863-3vvxI69GWo.mp3",
     image_url:
-      " https://ncsmusic.s3.eu-west-1.amazonaws.com/tracks/000/001/504/1000x0/8-rounds-1692316860-AfkIvN46qQ.jpg",
+      "https://ncsmusic.s3.eu-west-1.amazonaws.com/tracks/000/001/504/1000x0/8-rounds-1692316860-AfkIvN46qQ.jpg",
   },
   {
     song_id: "7",

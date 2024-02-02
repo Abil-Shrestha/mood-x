@@ -175,5 +175,5 @@ const seedArtistsTable = async () => {
     }
 };
 // seedArtistsTable()
-seedPlaylistsTable()
-// seedSongsTable()
+// seedPlaylistsTable()
+seedSongsTable()

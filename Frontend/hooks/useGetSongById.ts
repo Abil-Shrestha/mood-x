@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useMemo, useState } from "react"
 
 import { Song } from "@/types"
@@ -11,30 +12,23 @@ const useSongById = (id?: string) => {
     if (!id) {
       return
     }
-
     setIsLoading(true)
-
     const fetchSong = async () => {
       const response = await fetch(`${API_URL}/songs`)
       const data = await response.json()
       setSongData(data)
+      const song = songData.filter((song) => id === song.song_id)
+      console.log('setting song')
+      setSong(song)
     }
-
-    const data = songData.filter((song) => id === song.song_id)
-
-    setSong(data)
     setIsLoading(false)
-
     fetchSong()
   }, [id])
 
-  return useMemo(
-    () => ({
-      isLoading,
-      song,
-    }),
-    [isLoading, song]
-  )
+  return useMemo(() => ({
+    isLoading,
+    song
+  }), [isLoading, song]);
 }
 
 export default useSongById
